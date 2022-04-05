@@ -36,8 +36,8 @@ print(week_county["per_access"].describe())
 
 alamance = week_county.loc[week_county["county_code"] == 1]
 plt.scatter(alamance["week"],alamance["per_access"])
-plt.show()
-exit()
+#plt.show()
+#exit()
 
 #groups = df.groupby(by=["county_code", pd.Grouper(key="RecordedDate", freq="1M")])
 groups = df.groupby(by=["county_code"])
@@ -56,4 +56,5 @@ for i, group in enumerate(groups):
 
 ndf = pd.DataFrame.from_records(records)
 ndf = ndf.sort_values(by="county_code")
+ndf.to_csv("county_data.csv",index=False)
 print(ndf)
